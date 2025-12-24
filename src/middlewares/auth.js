@@ -1,29 +1,29 @@
 const adminAuth = (req,res,next)=>{
-    console.log('AdminAuth is done!')
+    console.log("Authoriztion Done")
+    const token = "adm"
+    const AuthorizedAdmin = token === "adm"
 
-    const token = "swa"
-    const AdminAuthorized = token === "swa";
-
-    if(!AdminAuthorized){
-        res.status(401).send("Unauthorized Admin Access Denied")
+    if(!AuthorizedAdmin){
+        res.send("unauthorized permission denied")
     }
+
     else{
-        next();
+        next()
     }
 }
 
-const userAuth =(req,res,next)=>{
-    console.log('UserAuth is done!')
+const userAuth = (req,res,next)=>{
+    console.log("Authoriztion Done")
+    const token = "us"
+    const AuthorizedUser = token === "us"
 
-    const token = "user"
-    const UserAuthorized = token === "use"
-
-    if(!UserAuthorized){
-        res.status(401).send("Unauthorized User Access Denied")
+    if(!AuthorizedUser){
+        res.send("unauthorized permission denied")
     }
+
     else{
-        next();
+        next()
     }
 }
 
-module.exports = {adminAuth, userAuth}
+module.exports = {adminAuth,userAuth}
