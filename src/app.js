@@ -18,24 +18,27 @@ app.post('/signup', async(req,res)=>{
       validateSignupData(req)
 
       //Encrypt the password
-      const {firstName, lastName, emailId, password} = req.body
+      const {firstName, lastName, emailId, password, gender, age} = req.body
 
-      const PasswordHash = bcrypt.hash(password,10)
+      const PasswordHash = await bcrypt.hash(password,10)
 
       //creating new Instance of User
         const user = new User({
           firstName,
           lastName,
           emailId,
+          age,
+          gender,
           password: PasswordHash
           })
 
         await user.save()
         res.send("User added successfully")
     }
-    catch(err){
-        res.status(400).send("Error while saving user")
-    }
+
+        catch (err) {
+         res.status(400).send("ERROR: " + err.message);
+}
 })
 
 //get details of a single user
