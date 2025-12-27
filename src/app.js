@@ -9,6 +9,7 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const cookieParser = require('cookie-parser')
 
+const {userAuth} = require('./middlewares/auth')
 
 app.use(express.json())
 app.use(cookieParser())
@@ -58,9 +59,9 @@ app.post('/login', async(req,res)=>{
 
   if(isPasswordValid){
     //generate token
-    const token = await jwt.sign({_id:user._id},"secretkey")
+    const token = await jwt.sign({_id:user._id},"secretkey",{expiresIn:"1h"})
 
-    res.cookie("token",token)
+    res.cookie("token",token, {expires: new Date(Date.now() + 8 * 3600000)})
     res.send("Logged In Successfully")
   }
   else{
@@ -72,23 +73,9 @@ app.post('/login', async(req,res)=>{
   }
 })
 
-app.get('/profile', async(req,res)=>{
+app.get('/profile', userAuth,async(req,res)=>{
   try{
-    const cookies = req.cookies
-
-    const {token} = cookies
-    if(!token){
-      throw new Error("Invalid Token")
-    }
-
-    const decodedMessage = await jwt.verify(token,"secretkey")
-    
-    const {_id} = decodedMessage
-
-    const user = await User.findById(_id)
-    if(!user){
-      throw new Error("User not found")
-    }
+    const user = req.user
     res.send(user)   
   }
   catch(err){

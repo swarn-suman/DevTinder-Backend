@@ -1,29 +1,30 @@
-const adminAuth = (req,res,next)=>{
-    console.log("Authoriztion Done")
-    const token = "adm"
-    const AuthorizedAdmin = token === "adm"
+const jwt = require('jsonwebtoken')
+const User = require('../models/user')
 
-    if(!AuthorizedAdmin){
-        res.send("unauthorized permission denied")
+
+const userAuth = async(req,res,next)=>{
+    try{
+    const {token} = req.cookies
+
+    if(!token){
+        throw new Error("Invalid Token")
     }
 
-    else{
-        next()
+    const decodedData = await jwt.verify(token,"secretkey")
+
+    const {_id} = decodedData
+    const user = await User.findById(_id)
+
+    if(!user){
+        throw new Error("User not found")
     }
+
+    req.user = user
+    next()
+}
+catch(err){
+    res.status(400).send("ERROR: " + err.message);
+}
 }
 
-const userAuth = (req,res,next)=>{
-    console.log("Authoriztion Done")
-    const token = "us"
-    const AuthorizedUser = token === "us"
-
-    if(!AuthorizedUser){
-        res.send("unauthorized permission denied")
-    }
-
-    else{
-        next()
-    }
-}
-
-module.exports = {adminAuth,userAuth}
+module.exports = {userAuth}
