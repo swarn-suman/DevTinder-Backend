@@ -41,6 +41,7 @@ authRouter.post("/signup", async (req, res) => {
   }
 });
 
+
 authRouter.post("/login", async (req, res) => {
   try {
     const { emailId, password } = req.body;
@@ -65,6 +66,8 @@ authRouter.post("/login", async (req, res) => {
     res.status(400).send("ERROR : " + err.message);
   }
 });
+
+
 
 authRouter.post("/logout", async (req, res) => {
   res.cookie("token", null, {
