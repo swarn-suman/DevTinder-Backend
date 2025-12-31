@@ -116,7 +116,7 @@ This repository contains the **backend** of DevTinder, built with **Node.js, Exp
 
 ### **1️⃣ Clone the Repository**
 ```bash
-git clone https://github.com/swarn-suman/DevTinder
+git clone https://github.com/swarn-suman/DevTinder-web
 cd devTinder-backend
 ```
 
