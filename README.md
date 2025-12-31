@@ -116,7 +116,7 @@ This repository contains the **backend** of DevTinder, built with **Node.js, Exp
 
 ### **1️⃣ Clone the Repository**
 ```bash
-git clone https://github.com/swarn-suman/DevTinder-web
+git clone https://github.com/swarn-suman/DevTinder.git
 cd devTinder-backend
 ```
 
@@ -138,7 +138,7 @@ Server runs at: `http://localhost:3000/`
 
 ## 🔗 Frontend Integration
 The frontend for DevTinder is available at:
-🔗 **[DevTinder Frontend Repository](https://github.com/)**
+🔗 **[DevTinder Frontend Repository](https://github.com/swarn-suman/DevTinder-web)**
 
 Make sure the backend is running before accessing the frontend.
 
