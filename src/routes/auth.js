@@ -10,7 +10,7 @@ authRouter.post("/signup", async (req, res) => {
     // Validation of data
     validateSignUpData(req);
 
-    const { firstName, lastName, emailId, password, about, gender, skills, age } = req.body;
+    const { firstName, lastName, emailId, password } = req.body;
 
     // Encrypt the password
     const passwordHash = await bcrypt.hash(password, 10);
@@ -21,10 +21,6 @@ authRouter.post("/signup", async (req, res) => {
       firstName,
       lastName,
       emailId,
-      about,
-      gender,
-      skills,
-      age,
       password: passwordHash,
     });
 
@@ -66,7 +62,6 @@ authRouter.post("/login", async (req, res) => {
     res.status(400).send("ERROR : " + err.message);
   }
 });
-
 
 
 authRouter.post("/logout", async (req, res) => {
