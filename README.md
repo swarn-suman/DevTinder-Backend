@@ -125,7 +125,7 @@ Create a `.env` file and add:
 ```ini
 DATABASE_URL=mongodb+srv://<username>:<password>@cluster0.mongodb.net/devTinder
 JWT_SECRET=your_jwt_secret
-PORT=3000
+PORT=your_PORT
 ```
 
 ### **3️⃣ Start the Backend Server**
