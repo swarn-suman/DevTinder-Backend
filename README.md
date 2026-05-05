@@ -47,7 +47,6 @@ This repository contains the **backend** of DevTinder, built with **Node.js, Exp
    - Ignored users  
    - Users with pending requests  
 ✅ Implemented **pagination** using `skip` & `limit`  
-✅ Optimized query using **MongoDB $nin and $ne operators**  
 
 ### **5. Database Design**
 ✅ **User Schema**:
