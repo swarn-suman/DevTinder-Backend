@@ -1,4 +1,4 @@
-# DevTinder Backend 🚀
+# DevTinder Backend 
 
 ## 📌 Overview
 DevTinder is a **MERN stack** web application designed to help developers **connect and collaborate**, similar to Tinder but specifically for developers. Users can create profiles, explore other developers, send connection requests, and manage their matches.
